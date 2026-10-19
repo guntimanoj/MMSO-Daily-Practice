@@ -1,0 +1,128 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyNN0wLRlR2fFBtO2LfmgVWl",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/guntimanoj/MMSO-Daily-Practice/blob/main/File%20Handling\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 5,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "yFBeWyYpR2ew",
+        "outputId": "6a834f7e-9903-48e2-9ec1-38fe96ff4768"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Lines: 2\n",
+            "Words: 6\n",
+            "Characters: 39\n",
+            "Mean: 19.5\n",
+            "First: Paython is useful.\n",
+            "Last: Paython is powerful.\n"
+          ]
+        }
+      ],
+      "source": [
+        "from pathlib import Path\n",
+        "\n",
+        "file_path = Path(\"notes.txt\")\n",
+        "\n",
+        "file_path.write_text(\n",
+        "    \"Paython is useful.\\n\"\n",
+        "    \"Paython is powerful.\",\n",
+        "    encoding=\"utf-8\"\n",
+        ")\n",
+        "try:\n",
+        "  text = file_path.read_text(encoding=\"utf-8\")\n",
+        "\n",
+        "  lines = text.splitlines()\n",
+        "  words = text.split()\n",
+        "  characters = len(text)\n",
+        "\n",
+        "  print(\"Lines:\", len(lines))\n",
+        "  print(\"Words:\", len(words))\n",
+        "  print(\"Characters:\", characters)\n",
+        "  print(\"Mean:\", characters / len(lines))\n",
+        "  print(\"First:\", lines[0])\n",
+        "  print(\"Last:\", lines[-1])\n",
+        "\n",
+        "except OSError as error:\n",
+        "  print(\"File error:\", error)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def read_positive_number(value):\n",
+        "  try:\n",
+        "    number = float(value)\n",
+        "  except ValueError:\n",
+        "    raise ValueError(\"Input must be a number\")\n",
+        "\n",
+        "  if number <= 0:\n",
+        "    raise ValueError(\"Input must be a positive number\")\n",
+        "  return number\n",
+        "try:\n",
+        "  print(read_positive_number(input(\"Enter a number:\")))\n",
+        "  print(\"Program Continuous\")\n",
+        "except ValueError as error:\n",
+        "  print(\"Invalid input!\", error)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "we9N0pIpUsmc",
+        "outputId": "269eb9ce-3232-4c9e-8519-0efc07cc3ae6"
+      },
+      "execution_count": 10,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Enter a number:-1\n",
+            "Invalid input! Input must be a positive number\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "6rd77YsvVUu6"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
